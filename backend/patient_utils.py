@@ -29,32 +29,25 @@ def format_patient_name(first_name: str, last_name: str) -> str:
     # Return the name in Last, First format 
     return f"{last_name}, {first_name}" 
  
- 
+
 def is_valid_patient_id(patient_id: str) -> bool: 
-    """ 
-    Checks whether a patient ID follows the required format. 
-     
-    A valid patient ID must: 
-        - Start with the letters PT followed by a hyphen 
-        - Be followed by exactly 6 digits 
-        - Example: PT-000123 
-     
-    Parameters: 
-        patient_id (str): The patient ID string to validate 
-     
-    Returns: 
-        bool: True if the ID is valid, False otherwise 
-    """ 
-    # Import the regular expression module for pattern matching 
-    import re 
-     
-    # Define the required pattern: PT- followed by exactly 6 digits 
-    pattern = r"^PT-\d{6}$" 
-     
-    # Check if the patient_id matches the pattern 
-CareSync Program - Git and GitHub Training Module    |    Page 19 
-    # re.match returns a match object if found, or None if not found 
-    return bool(re.match(pattern, patient_id)) 
+   """ 
+   Checks whether a patient ID follows the required format. 
+
+   A valid patient ID must: - Start with the letters PT followed by a hyphen - Be followed by exactly 6 digits - Example: PT-000123 
+   
+   Parameters: 
+       patient_id (str): The patient ID string to validate 
+
+   Returns: 
+       bool: True if the ID is valid, False otherwise 
+   """ 
+   import re 
+   # Strip whitespace from both ends of the input 
+   # This handles cases where a user pastes an ID with an accidental space 
+   patient_id = patient_id.strip() 
+   pattern = r"^PT-\d{6}$" 
+   return bool(re.match(pattern, patient_id))
  
  
 def get_role_display_name(role_code: str) -> str: 
